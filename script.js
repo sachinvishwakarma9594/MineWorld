@@ -6,21 +6,27 @@ const CONFIG = {
 
   // Optional: set the date you got together to show a live counter.
   // Format: "YYYY-MM-DD" (example: "2024-02-14"). Leave null to hide it.
-  startDate: null,
+  startDate: "2026-09-26",
 
   memories: [
     { image: "11.jpeg", title: "where it all began ♡" },
     { image: "12.jpeg", title: "my favorite smile" },
     { image: "13.jpeg", title: "just us ♡" },
     { image: "1.jpeg",  title: "that beautiful day" },
-    { image: "2.jpeg",  title: "one of my favorite memories" },
+    { image: "15.jpeg",  title: "one of my favorite memories" },
     { image: "3.jpeg",  title: "with you, always" },
     { image: "4.jpeg",  title: "a moment I would replay" },
-    { image: "5.jpeg",  title: "us being silly" },
+    { image: "16.jpeg",  title: "us being silly" },
     { image: "6.jpeg",  title: "and many more to come" },
     { image: "7.jpeg",  title: "my happy place" },
     { image: "8.jpeg",  title: "little moments, big love" },
-    { image: "9.jpeg",  title: "you + me" },
+    { image: "9.jpeg",  title: "Mine Cutiee" },
+    { image: "14.jpeg",  title: "a moment I would replay" },
+    { image: "17.jpeg",  title: "us being silly" },
+    { image: "18.jpeg",  title: "and many more to come" },
+    { image: "19.jpeg",  title: "my happy place" },
+    { image: "20.jpeg",  title: "little moments, big love" },
+    { image: "21.jpeg",  title: "you + me" },
     { image: "10.jpeg", title: "forever kind of feeling" }
   ],
 
