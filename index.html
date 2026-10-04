@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For My Favorite Person ❤️</title>
+  <meta name="theme-color" content="#1a0b1f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="locked">
+  <div id="petals" aria-hidden="true"></div>
+  <div class="progress"><span id="progressBar"></span></div>
+
+  <!-- INTRO: tap to enter (this tap also lets the music start on phones) -->
+  <div class="intro" id="intro">
+    <div class="intro-stars" aria-hidden="true"></div>
+    <div class="intro-inner">
+      <p class="eyebrow">psst... something is waiting for you</p>
+      <button class="envelope" id="enterBtn" type="button" aria-label="Open the envelope">
+        <span class="env-back"></span>
+        <span class="env-letter">for <b data-name>you</b> ♡</span>
+        <span class="env-flap"></span>
+        <span class="env-front"></span>
+        <span class="env-seal">♥</span>
+      </button>
+      <p class="intro-hint">tap the envelope</p>
+    </div>
+  </div>
+
+  <!-- Floating music button -->
+  <button class="music-btn" id="musicBtn" type="button" aria-label="Toggle music" aria-pressed="false">
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span id="musicText">music off</span>
+  </button>
+
+  <header class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+      <source src="2.mp4" type="video/mp4">
+    </video>
+    <div class="hero-image"></div>
+    <div class="hero-shade"></div>
+
+    <nav class="nav">
+      <div class="brand">ours <span>♡</span></div>
+    </nav>
+
+    <div class="hero-content reveal">
+      <p class="eyebrow">a tiny corner of the internet, made only for you</p>
+      <h1>Hey, <span class="script" data-name>my love</span>...</h1>
+      <p class="hero-copy">
+        I could have just said “I love you.”<br>
+        But you deserve a whole little world instead.
+      </p>
+      <p class="typed-line" aria-live="polite"><span id="typed"></span><b class="caret">|</b></p>
+      <button class="primary-btn" id="openLetter" type="button">
+        Open your little surprise <span>♡</span>
+      </button>
+      <p class="scroll-hint">scroll slowly · there are things I want to tell you</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="counter-section section reveal" id="counter" hidden>
+      <div class="section-kicker">we've been writing our story for</div>
+      <div class="counter-grid">
+        <div><b id="cDays">0</b><span>days</span></div>
+        <div><b id="cHours">0</b><span>hours</span></div>
+        <div><b id="cMins">0</b><span>minutes</span></div>
+        <div><b id="cSecs">0</b><span>seconds</span></div>
+      </div>
+      <p class="section-subtitle">and I'd happily do every single one again ♡</p>
+    </section>
+
+    <section class="letter-section section reveal" id="letter">
+      <div class="section-kicker">01 · a letter</div>
+      <div class="letter-card">
+        <div class="wax">♥</div>
+        <p class="handwritten">Dear <span data-name>my love</span>,</p>
+        <p>
+          Some people become a part of your life quietly.
+          And then, one day, you realize that ordinary moments don't feel
+          quite as ordinary without them.
+        </p>
+        <p>
+          That's what you became for me.
+          My favorite notification. My favorite conversation.
+          My favorite person to annoy. And somehow, still the person
+          I want beside me when the day gets difficult.
+        </p>
+        <p>
+          I don't need every day to be perfect.
+          I just want more of the little days with you —
+          more laughs, more silly arguments, more “have you eaten?”,
+          more memories that we'll look back at someday and smile about.
+        </p>
+        <p class="handwritten signoff">Always choosing you,<br>me ♡</p>
+      </div>
+    </section>
+
+    <blockquote class="quote-break reveal"><span class="qmark">“</span><p>Home isn't a place anymore. It's the moment I hear your voice.</p><cite>— for you, always</cite></blockquote>
+
+    <section class="memories-section section reveal" id="memories">
+      <div class="section-kicker">02 · our little archive</div>
+      <h2>Moments worth keeping.</h2>
+      <p class="section-subtitle">Tap any photo to look closer ♡</p>
+      <div class="memory-wall" id="memoryWall"></div>
+    </section>
+
+    <section class="clips-section section reveal" id="clips">
+      <div class="section-kicker">03 · little moments in motion</div>
+      <h2>Press play on <em>us.</em></h2>
+      <p class="section-subtitle">Tiny clips, big feelings. Swipe → and tap to play ♡</p>
+      <div class="clip-track" id="clipTrack"></div>
+      <div class="clip-dots" id="clipDots" aria-hidden="true"></div>
+    </section>
+
+    <section class="quote-section section reveal" id="quotes">
+      <div class="quote-card" id="quoteCard" role="button" tabindex="0" aria-label="Next quote">
+        <div class="quote-glow"></div>
+        <span class="qmark big">“</span>
+        <p class="quote-text" id="quoteText" aria-live="polite"></p>
+        <p class="quote-by" id="quoteBy"></p>
+        <div class="quote-dots" id="quoteDots"></div>
+        <p class="quote-hint">tap for another ♡</p>
+      </div>
+    </section>
+
+    <section class="jar-section section reveal" id="jar">
+      <div class="section-kicker">04 · love jar</div>
+      <h2>A jar full of little notes.</h2>
+      <p class="section-subtitle">Pick one whenever you need a hug from me.</p>
+      <button class="jar" id="jarBtn" type="button" aria-label="Pick a love note">
+        <span class="jar-lid"></span>
+        <span class="jar-glass">
+          <i style="--x:18%;--y:62%;--d:0s">♥</i><i style="--x:52%;--y:70%;--d:.6s">♥</i>
+          <i style="--x:34%;--y:42%;--d:1.1s">♡</i><i style="--x:64%;--y:48%;--d:1.7s">♥</i>
+          <i style="--x:26%;--y:22%;--d:2.2s">♡</i><i style="--x:55%;--y:24%;--d:.3s">♥</i>
+        </span>
+      </button>
+      <div class="jar-note" id="jarNote" aria-live="polite">tap the jar ♡</div>
+    </section>
+
+    <blockquote class="quote-break reveal"><span class="qmark">“</span><p>I didn't fall for you all at once. I just kept falling, a little more every day.</p><cite>— me, still falling</cite></blockquote>
+
+    <section class="reasons-section section reveal" id="reasons">
+      <div class="section-kicker">05 · little things</div>
+      <h2>Reasons I keep falling for you.</h2>
+      <p class="section-subtitle">Not a complete list. I'd need a lifetime for that.</p>
+
+      <div class="reason-grid">
+        <article class="reason-card"><span>01</span><div>♡</div><h3>Your smile</h3><p>It has an unfair ability to make a bad day feel smaller.</p></article>
+        <article class="reason-card"><span>02</span><div>♡</div><h3>Your little habits</h3><p>Even the tiny things you probably don't realize I notice.</p></article>
+        <article class="reason-card"><span>03</span><div>♡</div><h3>Our nonsense</h3><p>The jokes that make absolutely no sense to anyone else.</p></article>
+        <article class="reason-card"><span>04</span><div>♡</div><h3>The way you care</h3><p>You make being cared for feel like the most natural thing.</p></article>
+        <article class="reason-card"><span>05</span><div>♡</div><h3>Being myself</h3><p>With you, I don't have to perform. I can simply be me.</p></article>
+        <article class="reason-card"><span>06</span><div>♡</div><h3>Just... you</h3><p>No grand reason. No complicated explanation. Just you.</p></article>
+      </div>
+    </section>
+
+    <blockquote class="quote-break reveal"><span class="qmark">“</span><p>If love is a story, I want every chapter to have your name in it.</p><cite>— the next page is yours</cite></blockquote>
+
+    <section class="future-section section reveal" id="future">
+      <div class="future-card">
+        <div class="section-kicker">06 · next chapters</div>
+        <h2>We've already made memories.<br><em>Let's make a lot more.</em></h2>
+        <div class="future-line">
+          <span>more sunsets</span><i>♡</i>
+          <span>more random plans</span><i>♡</i>
+          <span>more laughter</span><i>♡</i>
+          <span>more us</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-section section reveal" id="forever">
+      <div class="final-glow"></div>
+      <p class="eyebrow">one last thing</p>
+      <h2>If I had to choose again...</h2>
+      <p class="final-copy">I'd still choose you. In every version of the story.</p>
+
+      <div class="ask" id="ask">
+        <p class="ask-q">Will you keep choosing me too? 🥺</p>
+        <div class="ask-btns">
+          <button class="primary-btn yes-btn" id="yesBtn" type="button">Yes, always ♥</button>
+          <button class="no-btn" id="noBtn" type="button">No</button>
+        </div>
+      </div>
+
+      <button class="heart-button" id="heartButton" type="button" aria-label="Send love">
+        <span>♥</span>
+      </button>
+      <p id="heartMessage" class="heart-message">tap the heart</p>
+
+      <div class="footer-love">made with too much love <span>♡</span></div>
+    </section>
+  </main>
+
+  <!-- Letter modal -->
+  <div class="letter-modal" id="letterModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-box">
+      <button class="close-modal" data-close-modal aria-label="Close" type="button">×</button>
+      <div class="mini-heart">♥</div>
+      <p class="eyebrow">a message for you</p>
+      <h2>Come a little closer.</h2>
+      <p>
+        There are a million beautiful places on the internet,
+        but I still wanted to build one tiny place that says:
+        <strong>you are loved.</strong>
+      </p>
+      <button class="primary-btn" data-close-modal type="button">Okay, I'm blushing ♡</button>
+    </div>
+  </div>
+
+  <!-- Photo lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="Close photo" type="button">×</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo" type="button">‹</button>
+    <figure>
+      <img id="lbImg" alt="" />
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo" type="button">›</button>
+  </div>
+
+  <audio id="loveAudio" src="music.mp3" loop preload="none" playsinline></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
